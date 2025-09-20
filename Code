@@ -1,0 +1,52 @@
+import time
+import random
+
+# Sentences for typing test
+sentences = [
+    "Python is a powerful programming language.",
+    "Typing speed tests help improve accuracy.",
+    "Artificial intelligence is changing the world.",
+    "Practice makes a person perfect in coding.",
+    "Google Colab is useful for running Python code online."
+]
+
+# Select a random sentence
+test_sentence = random.choice(sentences)
+
+print("***** Typing Speed Calculator *****")
+print("\nType the following sentence:\n")
+print(test_sentence)
+print("\nPress Enter when you are ready...\n")
+
+input("Press Enter to start...")
+
+# Start time
+start_time = time.time()
+
+# User typing
+typed_sentence = input("\nNow type here:\n")
+
+# End time
+end_time = time.time()
+
+# Time taken
+time_taken = end_time - start_time
+
+# Calculate words per minute
+words = len(typed_sentence.split())
+wpm = round((words / time_taken) * 60, 2)
+
+# Accuracy calculation
+correct_chars = 0
+for i, c in enumerate(typed_sentence):
+    if i < len(test_sentence) and c == test_sentence[i]:
+        correct_chars += 1
+
+accuracy = round((correct_chars / len(test_sentence)) * 100, 2)
+
+# Results
+print("\n***** Results *****")
+print(f"Time Taken: {round(time_taken, 2)} seconds")
+print(f"Words Typed: {words}")
+print(f"Typing Speed: {wpm} WPM")
+print(f"Accuracy: {accuracy}%")
